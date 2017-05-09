@@ -1,0 +1,2 @@
+class IntentClassifierClient(object):
+    pass

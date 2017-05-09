@@ -1,1 +1,1 @@
-client = 1
+from .client import IntentClassifierClient
