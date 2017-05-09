@@ -25,7 +25,9 @@ client.create_classifier(
 # to get the classifier id:
 # print(client.classifier_id)
 
-success, msg = client.create_intent_utterance_pairs([
+# create intent, utterances pairs
+# This is a idempotent action.
+success, msg = client.add_intent_utterance_pairs([
     {'intent': '打招呼', 'utterance': '嗨'},
     {'intent': '感謝', 'utterance': '謝謝'},
     {'intent': '說再見', 'utterance': '再見'},
@@ -35,12 +37,12 @@ success, msg = client.create_intent_utterance_pairs([
     {'intent': '說再見', 'utterance': '掰掰'},
     {'intent': '感謝', 'utterance': '有你真好'},
     {'intent': '說再見', 'utterance': '下次見'},
-])
+]) 
 
 if success:
     train_success, msg = client.train()
     if train_success:
-        result = client.predict('你好嗎')
+        result = client.predict('你好嗎') # This is a action without side-effects
 ```
 
 For existing classifier:
@@ -49,8 +51,9 @@ from ynlu import IntentClassifierClient
 
 client = IntentClassifierClient(
     token='TOKEN',
-    classifier_id='CLASSIFIER_ID'
 )
+
+client.get_classifier(classifier_id='CLASSIFIER_ID')
 
 result = client.predict('你好嗎')
 ```
