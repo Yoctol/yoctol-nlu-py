@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
+from yoctol_nlu import __version__
 
 try:
-    long_description = open("README.rst").read()
+    long_description = open("README.md").read()
 except IOError:
     long_description = ""
 
 setup(
     name="yoctol-nlu",
-    version="0.1.0",
+    version=__version__,
     description="Yoctol Natural Language Understanding SDK",
     license="MIT",
     author="cph",
