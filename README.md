@@ -8,7 +8,7 @@ pip install yoctol-nlu
 
 ## Usage
 
-###Intent Classifier Service
+### Intent Classifier Service
 
 For new user:
 ```python
