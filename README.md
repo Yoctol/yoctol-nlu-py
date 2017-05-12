@@ -2,6 +2,7 @@
 Yoctol Natural Language Understanding SDK for python.
 
 ## Install
+Use Python3.
 ```
 pip install yoctol-nlu
 ```
