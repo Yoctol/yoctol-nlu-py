@@ -27,7 +27,7 @@ client.create_classifier(
 
 # create intent, utterances pairs
 # This is a idempotent action, since it will check every item if it is added before.
-success, msg = client.add_intent_utterance_pairs([
+client.add_intent_utterance_pairs([
     {'intent': '打招呼', 'utterance': '嗨'},
     {'intent': '感謝', 'utterance': '謝謝'},
     {'intent': '說再見', 'utterance': '再見'},
@@ -39,10 +39,10 @@ success, msg = client.add_intent_utterance_pairs([
     {'intent': '說再見', 'utterance': '下次見'},
 ]) 
 
-if success:
-    train_success, msg = client.train()
-    if train_success:
-        result = client.predict('你好嗎') # This is a action without side-effects
+client.train()
+
+# wait a minute...
+result = client.predict('你好嗎') # This is a action without side-effects
 ```
 
 For existing classifier:
