@@ -14,7 +14,10 @@ setup(
     license="MIT",
     author="cph",
     packages=find_packages(),
-    install_requires=[],
+    install_requires=[
+        'gql==0.1.0',
+        'requests==2.13.0',
+    ],
     long_description=long_description,
     classifiers=[
         "Programming Language :: Python",

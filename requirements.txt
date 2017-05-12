@@ -1,2 +1,3 @@
-gql
+git+https://github.com/graphql-python/gql.git
 pytest
+requests==2.13.0
