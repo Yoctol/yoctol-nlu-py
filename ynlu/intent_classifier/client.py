@@ -13,20 +13,25 @@ class IntentClassifierClient(object):
         self.token = token
         self.classifier_id = None
 
-        request = requests.get(
-            INTENT_CLASSIFIER_URL,
-            headers={
-                'Host': INTENT_CLASSIFIER_HOST,
-                'Accept': 'text/html',
-            },
-        )
-        request.raise_for_status()
-        self.csrf = request.cookies['csrftoken']
+        # request = requests.get(
+        #     INTENT_CLASSIFIER_URL,
+        #     headers={
+        #         'Host': INTENT_CLASSIFIER_HOST,
+        #         'Accept': 'text/html',
+        #     },
+        # )
+        # request.raise_for_status()
+        # self.csrf = request.cookies['csrftoken']
+        # self._transport = RequestsHTTPTransport(
+        #     url=INTENT_CLASSIFIER_URL,
+        #     # auth=self.token,
+        #     cookies={'csrftoken': self.csrf},
+        #     headers={'x-csrftoken': self.csrf},
+        #     use_json=True,
+        # )
+
         self._transport = RequestsHTTPTransport(
             url=INTENT_CLASSIFIER_URL,
-            # auth=self.token,
-            cookies={'csrftoken': self.csrf},
-            headers={'x-csrftoken': self.csrf},
             use_json=True,
         )
         self._client = Client(
