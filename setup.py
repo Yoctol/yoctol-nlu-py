@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
-from yoctol_nlu import __version__
+from ynlu import __version__
 
 try:
     long_description = open("README.md").read()
