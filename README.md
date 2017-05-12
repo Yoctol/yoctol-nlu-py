@@ -26,7 +26,7 @@ client.create_classifier(
 # print(client.classifier_id)
 
 # create intent, utterances pairs
-# This is a idempotent action.
+# This is a idempotent action, since it will check every item if it is added before.
 success, msg = client.add_intent_utterance_pairs([
     {'intent': '打招呼', 'utterance': '嗨'},
     {'intent': '感謝', 'utterance': '謝謝'},
