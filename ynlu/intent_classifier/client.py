@@ -41,33 +41,57 @@ class IntentClassifierClient(object):
         )
 
     def create_classifier(self, name):
-        raw_query = """
-            mutation _($input: CreateClassifierInput!) {{
-                useToken(token: \"{0}\") {{
-                    ok
+        get_all_clf_query = """
+            mutation _ {{
+              useToken(token: \"{0}\") {{
+                ok
+              }}
+              myClassifiers {{
+                edges {{
+                  node {{
+                    id
+                    name
+                  }}
                 }}
-                createClassifier(input: $input) {{
-                    classifier {{
-                        id
-                    }}
-                }}
+              }}
             }}
         """.format(self.token)
-        query = gql(raw_query)
-
-        variable_values = {
-            'input': {
-                'name': name,
-            }
-        }
-
+        query = gql(get_all_clf_query)
         result = self._client.execute(
             query,
-            variable_values=variable_values,
         )
-        print(result)
 
-        self.classifier_id = result['createClassifier']['classifier']['id']
+        all_clf_names = { res['node']['name']: res['node']['id'] for res in result['myClassifiers']['edges']}
+        if name not in all_clf_names.keys():
+            raw_query = """
+                mutation _($input: CreateClassifierInput!) {{
+                    useToken(token: \"{0}\") {{
+                        ok
+                    }}
+                    createClassifier(input: $input) {{
+                        classifier {{
+                            id
+                        }}
+                    }}
+                }}
+            """.format(self.token)
+            query = gql(raw_query)
+
+            variable_values = {
+                'input': {
+                    'name': name,
+                }
+            }
+
+            result = self._client.execute(
+                query,
+                variable_values=variable_values,
+            )
+            print(result)
+
+            self.classifier_id = result['createClassifier']['classifier']['id']
+        else:
+            self.classifier_id = all_clf_names[name]
 
     def get_classifiers(self):
         pass
