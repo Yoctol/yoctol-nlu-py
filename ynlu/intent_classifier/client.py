@@ -75,6 +75,29 @@ class IntentClassifierClient(object):
     def set_classifier(self, classifier_id):
         self.classifier_id = classifier_id
 
+    def classifier_is_traning(self):
+        """Check if the classifier is training.
+
+        """
+        if self.classifier_id is None:
+            raise ValueError('classifier id is None!')
+        raw_query = """
+            mutation _ {{
+                useToken(token: \"{0}\") {{
+                    ok
+                }}
+                classifier(id: \"{1}\") {{
+                    isTraining
+                }}
+            }}
+        """.format(self.token, self.classifier_id)
+        query = gql(raw_query)
+
+        result = self._client.execute(
+            query,
+        )
+        return result['classifier']['isTraining']
+
     def _classifier_valid(self):
         pass
 
