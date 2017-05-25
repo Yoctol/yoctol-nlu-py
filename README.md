@@ -13,6 +13,7 @@ pip install yoctol-nlu
 
 For new user:
 ```python
+from time import sleep
 from ynlu import IntentClassifierClient
 
 client = IntentClassifierClient(
@@ -42,9 +43,14 @@ client.add_intent_utterance_pairs([
     {'intent': '說再見', 'utterance': '下次見'},
 ]) 
 
-client.train()
+client.train() # async train
 
-# wait a minute...
+while True:
+    if client.classifier_is_training():
+        sleep(1)
+        continue
+    break
+
 result = client.predict('你好嗎') # This is a action without side-effects
 ```
 
