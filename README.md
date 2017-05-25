@@ -19,6 +19,8 @@ client = IntentClassifierClient(
     token='TOKEN',
 )
 
+# create a classifier
+# If the name exist, will use the existed one.
 client.create_classifier(
     name='clf_for_test'
 )
@@ -54,7 +56,7 @@ client = IntentClassifierClient(
     token='TOKEN',
 )
 
-client.get_classifier(classifier_id='CLASSIFIER_ID')
+client.set_classifier(classifier_id='CLASSIFIER_ID')
 
 result = client.predict('你好嗎')
 ```
