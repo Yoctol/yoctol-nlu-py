@@ -52,6 +52,12 @@ while True:
     break
 
 result = client.predict('你好嗎') # This is a action without side-effects
+'''
+>>> result
+[{'score': 0.7828801870346069, 'intent': '打招呼'}, 
+ {'score': 0.11771836876869202, 'intent': '感謝'}, 
+ {'score': 0.0994015485048294, 'intent': '說再見'}]
+'''
 ```
 
 For existing classifier:
