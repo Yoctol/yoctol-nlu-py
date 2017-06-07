@@ -345,4 +345,14 @@ class IntentClassifierClient(object):
             variable_values=variable_values,
         )
 
-        return result
+        parsed_result = result['predict']['predictions']['edges']
+        parsed_result = [res['node'] for res in parsed_result]
+        parsed_result = [
+            {
+                'intent': ans['intent']['name'],
+                'score': ans['score'],
+            }
+            for ans in parsed_result
+        ]
+
+        return sorted(parsed_result, key=lambda x: x['score'], reverse=True)
