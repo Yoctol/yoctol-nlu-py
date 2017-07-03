@@ -99,7 +99,7 @@ class IntentClassifierClient(object):
     def set_classifier(self, classifier_id):
         self.classifier_id = classifier_id
 
-    def classifier_is_traning(self):
+    def classifier_is_training(self):
         """Check if the classifier is training.
 
         """
