@@ -96,6 +96,62 @@ class IntentClassifierClient(object):
     def get_classifiers(self):
         pass
 
+    def delete_data(self):
+        """Delete all data of the classifier.
+
+        Raises:
+            Exception: if classifier_id is None, a exception will raise.
+
+        """
+        if self.classifier_id is None:
+            raise Exception('Should set classifier id first.')
+        get_all_intent_query = """
+            mutation _ {{
+              useToken(token: \"{0}\") {{
+                ok
+              }}
+              classifier(id: \"{1}\") {{
+                intents {{
+                  edges {{
+                    node {{
+                      id
+                    }}
+                  }}
+                }}
+              }}
+            }}
+        """.format(self.token, self.classifier_id)
+        query = gql(get_all_intent_query)
+        result = self._client.execute(
+            query,
+        )
+        intents = result['classifier']['intents']['edges']
+        intent_ids = [intent['node']['id'] for intent in intents]
+
+        for intent_id in intent_ids:
+            get_all_intent_query = """
+                mutation _($input: DeleteIntentInput!) {{
+                    useToken(token: \"{0}\") {{
+                        ok
+                    }}
+                    deleteIntent(input: $input) {{
+                        classifier {{
+                            id
+                        }}
+                    }}
+                }}
+            """.format(self.token)
+            query = gql(get_all_intent_query)
+            variable_values = {
+                'input': {
+                    'intentId': intent_id,
+                }
+            }
+            self._client.execute(
+                query,
+                variable_values=variable_values,
+            )
+
     def set_classifier(self, classifier_id):
         self.classifier_id = classifier_id
 
