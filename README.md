@@ -22,7 +22,7 @@ client = IntentClassifierClient(
 
 # create a classifier
 # If the name exist, will use the existed one.
-client.create_classifier(
+clf = client.create_classifier(
     name='clf_for_test'
 )
 
@@ -31,7 +31,7 @@ client.create_classifier(
 
 # create intent, utterances pairs
 # This is a idempotent action, since it will check every item if it is added before.
-client.add_intent_utterance_pairs([
+clf.add_intent_utterance_pairs([
     {'intent': '打招呼', 'utterance': '嗨'},
     {'intent': '感謝', 'utterance': '謝謝'},
     {'intent': '說再見', 'utterance': '再見'},
@@ -43,15 +43,15 @@ client.add_intent_utterance_pairs([
     {'intent': '說再見', 'utterance': '下次見'},
 ]) 
 
-client.train() # async train
+clf.train() # async train
 
 while True:
-    if client.classifier_is_training():
+    if clf.is_training():
         sleep(1)
         continue
     break
 
-result = client.predict('你好嗎') # This is a action without side-effects
+result = clf.predict('你好嗎') # This is a action without side-effects
 '''
 >>> result
 [{'score': 0.7828801870346069, 'intent': '打招呼'}, 
