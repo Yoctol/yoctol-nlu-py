@@ -1,9 +1,10 @@
 from unittest import TestCase
-from unittest.mock import MagicMock
-
-from gql import Client
 
 from ..client import NLUClient
+
+
+def mock_client(instance, retries):
+    return 'Some random client'
 
 
 class NLUClientTestCase(TestCase):
@@ -11,15 +12,19 @@ class NLUClientTestCase(TestCase):
     def setUp(self):
         self.token = 'some_token_here'
         self.model_ids = ['5566', 'some_id', 'here', '1212test7878', 'here']
-        self.client = NLUClient(token=self.token, classifier_ids=self.model_ids)
-        Client = MagicMock()
+        NLUClient.build_client = mock_client
+        self.client = NLUClient(
+            token=self.token,
+            classifier_ids=self.model_ids,
+            url='',
+        )
 
     def test_client_init(self):
         client = self.client
         self.assertEqual(client.token, self.token)
         self.assertEqual(client._classifier_ids, list(set(self.model_ids)))
-        for model_id, model in zip(client._classifier_ids, client._models):
-            self.assertEqual(model_id, model.model_id)
+        for model_id in client._classifier_ids:
+            self.assertEqual(model_id, client._models[model_id].model_id)
 
     def test_get_model_by_id(self):
         right_id = '5566'

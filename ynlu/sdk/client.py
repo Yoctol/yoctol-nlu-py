@@ -27,16 +27,19 @@ class NLUClient(object):
             url=url,
             use_json=True,
         )
-        self._client = Client(
-            retries=expected_retries,
-            transport=self._transport,
-            fetch_schema_from_transport=True,
-        )
+        self._client = self.build_client(retries=expected_retries)
         # Remove duplication
         self._classifier_ids = list(set(classifier_ids))
         self._models = {
             clf_id: Model(clf_id, self._client) for clf_id in classifier_ids
         }
+
+    def build_client(self, retries: int):
+        return Client(
+            retries=retries,
+            transport=self._transport,
+            fetch_schema_from_transport=True,
+        )
 
     def __getitem__(self, key):
         return self.get_model_by_id(key)
