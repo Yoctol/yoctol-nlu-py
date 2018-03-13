@@ -1,35 +1,30 @@
 from typing import List
 
-from gql import Client, gql
+from gql import Client
 from gql.transport.requests import RequestsHTTPTransport
 
 from .model import Model
 
 
-class IntentClassifierClient(object):
+class NLUClient(object):
     """
     Client which could contain multiple intent clfs
     NOTE: Only support predicting for now
     """
 
-    INTENT_CLASSIFIER_URL = 'https://ynlu.yoctol.com/graphql'
+    URL = 'https://ynlu.yoctol.com/graphql'
 
     def __init__(
         self,
         token: str,
         classifier_ids: List[str],
         expected_retries: int = 1,
-        intent_classifier_url: str = INTENT_CLASSIFIER_URL,
+        url: str = URL,
     ):
         self.token = token
-        # Remove duplication
-        self._classifier_ids = list(set(classifier_ids))
-        self._models = {
-            clf_id: Model(clf_id) for clf_id in classifier_ids
-        }
 
         self._transport = RequestsHTTPTransport(
-            url=INTENT_CLASSIFIER_URL,
+            url=url,
             use_json=True,
         )
         self._client = Client(
@@ -37,11 +32,19 @@ class IntentClassifierClient(object):
             transport=self._transport,
             fetch_schema_from_transport=True,
         )
+        # Remove duplication
+        self._classifier_ids = list(set(classifier_ids))
+        self._models = {
+            clf_id: Model(clf_id, self._client) for clf_id in classifier_ids
+        }
+
+    def __getitem__(self, key):
+        return self.get_model_by_id(key)
 
     def get_model_by_id(
         self,
         classifier_id: str,
-    ):
+    ) -> Model:
         self.check_clf_id(classifier_id)
         return self._models[classifier_id]
 
