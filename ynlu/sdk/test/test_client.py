@@ -1,4 +1,7 @@
 from unittest import TestCase
+from unittest.mock import MagicMock
+
+from gql import Client
 
 from ..client import NLUClient
 
@@ -9,6 +12,7 @@ class NLUClientTestCase(TestCase):
         self.token = 'some_token_here'
         self.model_ids = ['5566', 'some_id', 'here', '1212test7878', 'here']
         self.client = NLUClient(token=self.token, classifier_ids=self.model_ids)
+        Client = MagicMock()
 
     def test_client_init(self):
         client = self.client
