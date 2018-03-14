@@ -2,10 +2,9 @@
 Yoctol Natural Language Understanding SDK for python.
 
 ## Install
-Use Python3 & Pipenv
+Use Python3
 ```
-pipenv install
-pipenv shell
+pip install yoctol-nlu
 ```
 
 ## Usage
