@@ -3,7 +3,7 @@ from unittest import TestCase
 from ..client import NLUClient
 
 
-def mock_client(_, __):
+def mock_client(_, retries):
     return 'Some random client'
 
 
