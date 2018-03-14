@@ -15,12 +15,12 @@ class NLUClient(object):
     URL = 'https://ynlu.yoctol.com/graphql'
 
     def __init__(
-        self,
-        token: str,
-        classifier_ids: List[str],
-        expected_retries: int = 1,
-        url: str = URL,
-    ):
+            self,
+            token: str,
+            classifier_ids: List[str],
+            expected_retries: int = 1,
+            url: str = URL,
+        ):
         self.token = token
 
         self._transport = RequestsHTTPTransport(
@@ -51,15 +51,15 @@ class NLUClient(object):
         return self.get_model_by_id(key)
 
     def get_model_by_id(
-        self,
-        classifier_id: str,
-    ) -> Model:
+            self,
+            classifier_id: str,
+        ) -> Model:
         self.check_clf_id(classifier_id)
         return self._models[classifier_id]
 
     def check_clf_id(
-        self,
-        classifier_id: str,
-    ) -> None:
+            self,
+            classifier_id: str,
+        ) -> None:
         if classifier_id not in self._classifier_ids:
             raise ValueError('Illegal clf id {}'.format(classifier_id))

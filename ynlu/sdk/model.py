@@ -6,10 +6,10 @@ from gql import Client, gql
 class Model(object):
 
     def __init__(
-        self,
-        classifier_id: str,
-        client: Client,
-    ):
+            self,
+            classifier_id: str,
+            client: Client,
+        ):
         self._classifier_id = classifier_id
         self._client = client
 
@@ -91,8 +91,8 @@ class Model(object):
         return intents_result, entities_result
 
     def batch_predict(
-        self,
-        utterances: List[str],
-    ) -> List[Tuple[List[Dict], List[Dict]]]:
+            self,
+            utterances: List[str],
+        ) -> List[Tuple[List[Dict], List[Dict]]]:
         predictions = [self.predict(utt) for utt in utterances]
         return predictions
