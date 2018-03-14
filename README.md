@@ -1,4 +1,7 @@
 # yoctol-nlu-py
+[![Build Status](https://travis-ci.org/Yoctol/yoctol-nlu-py.svg?branch=master)](https://travis-ci.org/Yoctol/yoctol-nlu-py)
+[![PyPI version](https://badge.fury.io/py/yoctol-nlu.svg)](https://badge.fury.io/py/yoctol-nlu)
+
 Yoctol Natural Language Understanding SDK for python.
 
 ## Install
