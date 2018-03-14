@@ -1,15 +1,22 @@
 # -*- coding: utf-8 -*-
+import os
+
 from setuptools import setup, find_packages
-from ynlu import __version__
+
+here = os.path.abspath(os.path.dirname(__file__))
 
 try:
     long_description = open("README.md").read()
 except IOError:
     long_description = ""
 
+about = {}
+with open(os.path.join(here, "ynlu", "__version__.py")) as f:
+    exec(f.read(), about)
+
 setup(
     name="yoctol-nlu",
-    version=__version__,
+    version=about["__version__"],
     description="Yoctol Natural Language Understanding SDK",
     license="MIT",
     author="cph",

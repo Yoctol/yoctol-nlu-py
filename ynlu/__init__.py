@@ -1,3 +1,2 @@
-__version__ = '0.4.0'
-
+from .__version__ import __version__
 from .sdk import NLUClient, Model 
