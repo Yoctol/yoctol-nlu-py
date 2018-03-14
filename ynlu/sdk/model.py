@@ -31,21 +31,23 @@ class Model(object):
                 )
             )
         raw_query = """
-            mutation _($classifierId: String!, $text: String!, $exactly: Boolean) {{
-                predict(classifierId: $classifierId, text: $text, exactly: $exactly) {{
-                    intents {{
+            mutation predict($classifierId: String!, $text: String!, $exactly: Boolean) {
+                predict(classifierId: $classifierId, text: $text, exactly: $exactly) {
+                    intents {
                         name
                         score
-                    }}
-                    entities {{
+                    }
+                    entities {
                         name
                         value
                         score
-                    }}
-                    match {{
+                    }
+                    match {
                         isMatched
                         score
-                    }}
+                    }
+                }
+            }
         """
         gql_query = gql(raw_query)
         variable_values = {
@@ -58,25 +60,33 @@ class Model(object):
             variable_values=variable_values,
         )
 
-        intents_result = result['intents']
+        intents_result = result['predict']['intents']
         intents_result = [
             {
-                'intent': ans['intents']['name'],
-                'score': ans['intents']['score'],
+                'intent': ans['name'],
+                'score': ans['score'],
             }
             for ans in intents_result
         ]
-        intents_result = sorted(intents_result, key=lambda x: x['score'], reverse=True)
+        intents_result = sorted(
+            intents_result,
+            key=lambda x: x['score'],
+            reverse=True,
+        )
 
-        entities_result = result['entities']
+        entities_result = result['predict']['entities']
         entities_result = [
             {
-                'entity': ans['entities']['name'],
-                'score': ans['entities']['score'],
+                'entity': ans['name'],
+                'score': ans['score'],
             }
             for ans in entities_result
         ]
-        entities_result = sorted(entities_result, key=lambda x: x['score'], reverse=True)
+        entities_result = sorted(
+            entities_result,
+            key=lambda x: x['score'],
+            reverse=True,
+        )
 
         return intents_result, entities_result
 

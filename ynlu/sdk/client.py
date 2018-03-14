@@ -27,6 +27,12 @@ class NLUClient(object):
             url=url,
             use_json=True,
         )
+        self._transport.headers = {
+            "User-Agent": "Mozilla/5.0 (X11; Ubuntu; " +
+            "Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0",
+            "Authorization": "Bearer {}".format(self.token),
+            "content-type": "application/json",
+        }
         self._client = self.build_client(retries=expected_retries)
         # Remove duplication
         self._classifier_ids = list(set(classifier_ids))

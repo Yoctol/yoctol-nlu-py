@@ -24,7 +24,7 @@ class NLUClientTestCase(TestCase):
         self.assertEqual(client.token, self.token)
         self.assertEqual(client._classifier_ids, list(set(self.model_ids)))
         for model_id in client._classifier_ids:
-            self.assertEqual(model_id, client._models[model_id].model_id)
+            self.assertEqual(model_id, client[model_id].model_id)
 
     def test_get_model_by_id(self):
         right_id = '5566'
