@@ -1,6 +1,6 @@
 from typing import List
 
-from gql import Client
+from gql import gql, Client
 from gql.transport.requests import RequestsHTTPTransport
 
 from .model import Model
@@ -17,7 +17,6 @@ class NLUClient(object):
     def __init__(
             self,
             token: str,
-            classifier_ids: List[str],
             expected_retries: int = 1,
             url: str = URL,
         ):
@@ -34,11 +33,48 @@ class NLUClient(object):
             "content-type": "application/json",
         }
         self._client = self.build_client(retries=expected_retries)
-        # Remove duplication
-        self._classifier_ids = list(set(classifier_ids))
+        self._classifier_ids = self.fetch_all_available_clf_ids()
         self._models = {
-            clf_id: Model(clf_id, self._client) for clf_id in classifier_ids
+            clf_id: Model(clf_id, self._client) for clf_id in self._classifier_ids
         }
+
+    def fetch_all_available_clf_ids(self) -> List[str]:
+        print("Fetching all classifier's id")
+        projects_raw_query = """
+            query projects {
+                projects {
+                    id
+                }
+            }
+        """
+        projects_query = gql(projects_raw_query)
+        projects_result = self._client.execute(projects_query)
+        projects_id = [projects['id'] for projects in projects_result['projects']]
+        clfs_id = []
+        for p_id in projects_id:
+            clfs_raw_query = """
+                query project($id: Int!) {
+                    project(id: $id) {
+                        classifiers {
+                            id
+                        }
+                    }
+                }
+            """
+            clfs_query = gql(clfs_raw_query)
+            variable_values = {
+                'id': p_id,
+            }
+            clfs_result = self._client.execute(
+                clfs_query,
+                variable_values=variable_values,
+            )
+            clfs_id_in_project = [clf['id'] for clf in clfs_result['project']['classifiers']]
+            clfs_id.extend(clfs_id_in_project)
+        return clfs_id
+
+    def get_all_available_clf_ids(self) -> List[str]:
+        return self._classifier_ids[:]
 
     def build_client(self, retries: int):
         return Client(

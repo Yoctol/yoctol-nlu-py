@@ -1,4 +1,5 @@
 from typing import List, Dict, Tuple
+import re
 
 from gql import Client, gql
 
@@ -10,6 +11,12 @@ class Model(object):
             classifier_id: str,
             client: Client,
         ):
+        if not bool(re.match(r'^[0-9]+$', classifier_id)):
+            raise ValueError(
+                'id should be string of number, got {}'.format(
+                    classifier_id,
+                )
+            )
         self._classifier_id = classifier_id
         self._client = client
 
