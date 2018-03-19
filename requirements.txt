@@ -1,2 +1,4 @@
 git+https://github.com/graphql-python/gql.git
 requests==2.13.0
+flake8==3.5.0
+flake8-config-yoctol==0.0.9

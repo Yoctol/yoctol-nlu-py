@@ -1,0 +1,16 @@
+[flake8]
+max-line-length = 100
+ignore =
+    E125,E121,E266,
+    # print is allowed
+    T001, T003
+exclude =
+    .git
+    # __pycache__
+    __pycache__
+    # virtual environment
+    .venv/
+    venv/
+    env/
+max_complexity = 10
+statistics = true
