@@ -16,17 +16,28 @@ pip install yoctol-nlu
 
 For existing classifier:
 ```python
-from time import sleep
 from ynlu import NLUClient
 
-client = NLUClient(
-    token='TOKEN_HERE',
-    classifier_ids=['clf_id1', 'clf_id2', 'more_clf_ids']
-)
+client = NLUClient(token='YOUR_TOKEN_HERE')
 
-# get the model given the classifier_id
-model = client['clf_id1']
+# Get all possible clf ids
+ids = client.get_all_available_clf_ids()
+print(ids)
 
+# Get model by id
+model = client.get_model_by_id(ids[0])
+
+# Predict
 intent_result, entity_result = model.predict('飲料喝到飽')
 
+# Also could get the clf by clf's name
+# Get all possible clf names
+names = clf.get_all_available_clf_names()
+print(names)
+
+# Get model by name
+model = client.get_model_by_name(names[0])
+
+# Predict
+intent_result, entity_result = model.predict('飲料喝到飽')
 ```

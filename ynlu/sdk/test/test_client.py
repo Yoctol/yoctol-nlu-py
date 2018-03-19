@@ -4,13 +4,14 @@ from ..client import NLUClient
 
 
 TEST_MODEL_ID = ['5566', '7788', '1024']
+TEST_MODEL_NAME = ['random', 'name', 'here']
 
 
 def mock_client(_, retries):
     return 'Some random client'
 
-def mock_fetch_all_available_clf_ids(_):
-    return TEST_MODEL_ID
+def mock_fetch_all_available_clf_ids_and_names(_):
+    return TEST_MODEL_ID, TEST_MODEL_NAME
 
 
 class NLUClientTestCase(TestCase):
@@ -18,7 +19,7 @@ class NLUClientTestCase(TestCase):
     def setUp(self):
         self.token = 'some_token_here'
         NLUClient.build_client = mock_client
-        NLUClient.fetch_all_available_clf_ids = mock_fetch_all_available_clf_ids
+        NLUClient.fetch_all_available_clf_ids_and_names = mock_fetch_all_available_clf_ids_and_names
         self.client = NLUClient(
             token=self.token,
             url='',
