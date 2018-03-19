@@ -1,2 +1,2 @@
-from .client import NLUClient
-from .model import Model
+from .client import NLUClient  # noqa
+from .model import Model  # noqa

@@ -10,6 +10,7 @@ TEST_MODEL_NAME = ['random', 'name', 'here']
 def mock_client(_, retries):
     return 'Some random client'
 
+
 def mock_fetch_all_available_clf_ids_and_names(_):
     return TEST_MODEL_ID, TEST_MODEL_NAME
 

@@ -15,7 +15,7 @@ class Model(object):
             raise ValueError(
                 'id should be string of number, got {}'.format(
                     classifier_id,
-                )
+                ),
             )
         self._classifier_id = classifier_id
         self._client = client
@@ -33,9 +33,10 @@ class Model(object):
             exactly: bool = True,
         ) -> Tuple[List[Dict], List[Dict]]:
         if not isinstance(utterance, str):
-            raise ValueError('utterance is not str, got {}'.format(
-                type(utterance)
-                )
+            raise ValueError(
+                'utterance is not str, got {}'.format(
+                    type(utterance),
+                ),
             )
         raw_query = """
             mutation predict($classifierId: String!, $text: String!, $exactly: Boolean) {
