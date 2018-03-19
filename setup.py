@@ -25,7 +25,7 @@ setup(
         'gql==0.1.0',
         'requests==2.13.0',
         'flake8==3.5.0',
-        'flake8-config-yoctol==0.0.8',
+        'flake8-config-yoctol==0.0.9',
     ],
     long_description=long_description,
     classifiers=[
