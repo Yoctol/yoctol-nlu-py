@@ -12,5 +12,6 @@ exclude =
     .venv/
     venv/
     env/
+    build/
 max_complexity = 10
 statistics = true
