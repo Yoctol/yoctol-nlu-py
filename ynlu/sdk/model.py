@@ -86,6 +86,7 @@ class Model(object):
         entities_result = [
             {
                 'entity': ans['name'],
+                'value': ans['value'],
                 'score': ans['score'],
             }
             for ans in entities_result
