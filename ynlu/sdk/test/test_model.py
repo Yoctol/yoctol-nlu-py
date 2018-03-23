@@ -1,5 +1,4 @@
 from unittest import TestCase
-from unittest.mock import MagicMock
 
 from ..model import Model
 
@@ -54,7 +53,6 @@ FAKE_ENTITY_SHOULD_RETURN = [
 ]
 
 
-
 class MockClient:
     def execute(self, *_, **__):
         return FAKE_QUERY
@@ -64,8 +62,8 @@ class ModelTestCase(TestCase):
 
     def setUp(self):
         self.model = Model(
-            classifier_id = 7878,
-            client = MockClient(),
+            classifier_id=7878,
+            client=MockClient(),
         )
 
     def test_model_init(self):
