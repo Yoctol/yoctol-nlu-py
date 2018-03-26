@@ -63,12 +63,12 @@ class ModelTestCase(TestCase):
 
     def setUp(self):
         self.model = Model(
-            classifier_id=7878,
+            classifier_id='7878',
             client=MockClient(),
         )
 
     def test_model_init(self):
-        self.assertEqual(self.model.model_id, 7878)
+        self.assertEqual(self.model.model_id, '7878')
 
     def test_model_id(self):
         self.assertEqual(self.model.model_id, self.model._classifier_id)
