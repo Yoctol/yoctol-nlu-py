@@ -1,0 +1,1 @@
+NOT_ENTITY = "DONT_CARE"
