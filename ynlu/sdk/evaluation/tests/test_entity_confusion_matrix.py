@@ -39,9 +39,7 @@ class EntityConfusionMatrixTestCase(TestCase):
         ]
         for i, test_case in enumerate(test_cases):
             with self.subTest(i=i):
-                result = entity_confusion_matrix(
-                    **test_case[0],
-                )
+                result = entity_confusion_matrix(**test_case[0])
                 self.assertEqual(
                     test_case[1][0].tolist(),
                     result[0].tolist(),

@@ -4,8 +4,6 @@ ignore =
     E125,E121,E266,
     # print is allowed
     T001, T003
-    # trailing comma
-    C815
 exclude =
     .git
     # __pycache__
