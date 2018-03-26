@@ -1,7 +1,8 @@
--e .
+gql-fork==0.2.0
+scipy
+numpy
+requests==2.13.0
 flake8==3.5.0
 flake8-config-yoctol==0.0.9
-numpy
 matplotlib
 sklearn
-scipy
