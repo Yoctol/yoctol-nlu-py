@@ -54,6 +54,7 @@ FAKE_ENTITY_SHOULD_RETURN = [
 
 
 class MockClient:
+
     def execute(self, gql_query, variable_values):
         return FAKE_QUERY
 
