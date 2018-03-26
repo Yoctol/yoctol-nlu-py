@@ -22,7 +22,7 @@ setup(
     author="cph",
     packages=find_packages(),
     install_requires=[
-        'gql==0.1.0',
+        'gql-fork==0.2.0',
         'requests==2.13.0',
         'flake8==3.5.0',
         'flake8-config-yoctol==0.0.9',
