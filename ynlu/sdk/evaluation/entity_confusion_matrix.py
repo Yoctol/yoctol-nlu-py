@@ -54,6 +54,7 @@ def entity_confusion_matrix_figure(
         confusion_matrix,
         unique_entities: List[str],
         normalize: bool = False,
+        output_path: str = None,
         title: str = "Confusion matrix for entity",
         figure_size: Tuple[int, int] = (8, 6),
         cmap=plt.cm.Blues,
@@ -92,4 +93,9 @@ def entity_confusion_matrix_figure(
     plt.tight_layout()
     plt.ylabel('True Label')
     plt.xlabel('Predicted Label')
-    plt.show()
+
+    if output_path is not None:
+        plt.savefig(output_path)
+        print("Saving confusion matrix figure to {}".format(output_path))
+    else:
+        plt.show()
