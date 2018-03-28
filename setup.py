@@ -28,8 +28,6 @@ setup(
         "scipy==1.0.1",
         "numpy==1.14.2",
         "requests==2.13.0",
-        "flake8==3.5.0",
-        "flake8-config-yoctol==0.0.9",
         "matplotlib==2.2.2",
         "sklearn==0.0",
     ],
