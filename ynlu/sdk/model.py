@@ -68,40 +68,40 @@ class Model(object):
             variable_values=variable_values,
         )
 
-        intents_result = result['predict']['intents']
-        intents_result = [
+        intents_prediction = result['predict']['intents']
+        intents_prediction = [
             {
                 'intent': ans['name'],
                 'score': ans['score'],
             }
-            for ans in intents_result
+            for ans in intents_prediction
         ]
-        intents_result = sorted(
-            intents_result,
+        intents_prediction = sorted(
+            intents_prediction,
             key=lambda x: x['score'],
             reverse=True,
         )
 
-        entities_result = result['predict']['entities']
-        entities_result = [
+        entities_prediction = result['predict']['entities']
+        entities_prediction = [
             {
                 'entity': ans['name'],
                 'value': ans['value'],
                 'score': ans['score'],
             }
-            for ans in entities_result
+            for ans in entities_prediction
         ]
-        entities_result = sorted(
-            entities_result,
+        entities_prediction = sorted(
+            entities_prediction,
             key=lambda x: x['score'],
             reverse=True,
         )
 
-        return intents_result, entities_result
+        return intents_prediction, entities_prediction
 
     def batch_predict(
             self,
             utterances: List[str],
         ) -> List[Tuple[List[Dict], List[Dict]]]:
-        predictions = [self.predict(utt) for utt in utterances]
-        return predictions
+        intents_predictions, entities_predictions = zip(*[self.predict(utt) for utt in utterances])
+        return list(intents_predictions), list(entities_predictions)
