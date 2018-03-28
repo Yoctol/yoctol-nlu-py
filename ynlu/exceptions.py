@@ -1,0 +1,2 @@
+class BaseYNLUException(Exception):
+    pass
