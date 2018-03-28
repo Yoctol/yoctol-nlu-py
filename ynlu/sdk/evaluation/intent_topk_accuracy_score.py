@@ -1,7 +1,7 @@
 from typing import List, Dict
 
 
-def intent_topk_accuracy_score(
+def single__intent_topk_accuracy_score(
         intent_prediction: List[Dict[str, str]],
         y_true: List[str],
         k: int = 1,
@@ -14,7 +14,7 @@ def intent_topk_accuracy_score(
     return accuracy_score
 
 
-def intent_topk_accuracy_score_overall(
+def intent_topk_accuracy_score(
         intent_predictions: List[List[Dict[str, str]]],
         y_trues: List[List[str]],
         k: int=1,
@@ -26,7 +26,7 @@ def intent_topk_accuracy_score_overall(
     accuracy_scores = []
     for y_pred, y_true in zip(intent_predictions, y_trues):
         accuracy_scores.append(
-            intent_topk_accuracy_score(
+            single__intent_topk_accuracy_score(
                 intent_prediction=y_pred,
                 y_true=y_true,
                 k=k,

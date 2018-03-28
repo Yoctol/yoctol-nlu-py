@@ -1,13 +1,13 @@
 from unittest import TestCase
 from ..intent_topk_precision_score import (
+    single__intent_topk_precision_score,
     intent_topk_precision_score,
-    intent_topk_precision_score_overall,
 )
 
 
 class TopKAccuracyScoreTestCase(TestCase):
 
-    def test_top1_precision_score(self):
+    def test_single__top1_precision_score(self):
         test_cases = [
             (
                 {
@@ -60,10 +60,10 @@ class TopKAccuracyScoreTestCase(TestCase):
         ]
         for i, test_case in enumerate(test_cases):
             with self.subTest(i=i):
-                result = intent_topk_precision_score(**test_case[0])
+                result = single__intent_topk_precision_score(**test_case[0])
                 self.assertAlmostEqual(test_case[1], result)
 
-    def test_top3_precision_score(self):
+    def test_single__top3_precision_score(self):
         test_cases = [
             (
                 {
@@ -127,10 +127,10 @@ class TopKAccuracyScoreTestCase(TestCase):
         ]
         for i, test_case in enumerate(test_cases):
             with self.subTest(i=i):
-                result = intent_topk_precision_score(**test_case[0])
+                result = single__intent_topk_precision_score(**test_case[0])
                 self.assertAlmostEqual(test_case[1], result)
 
-    def test_top1_precision_score_overall(self):
+    def test_top1_precision_score(self):
         test_cases = [
             (
                 {
@@ -159,10 +159,10 @@ class TopKAccuracyScoreTestCase(TestCase):
         ]
         for i, test_case in enumerate(test_cases):
             with self.subTest(i=i):
-                result = intent_topk_precision_score_overall(**test_case[0])
+                result = intent_topk_precision_score(**test_case[0])
                 self.assertAlmostEqual(test_case[1], result)
 
-    def test_top3_precision_score_overall(self):
+    def test_top3_precision_score(self):
         test_cases = [
             (
                 {
@@ -209,5 +209,5 @@ class TopKAccuracyScoreTestCase(TestCase):
         ]
         for i, test_case in enumerate(test_cases):
             with self.subTest(i=i):
-                result = intent_topk_precision_score_overall(**test_case[0])
+                result = intent_topk_precision_score(**test_case[0])
                 self.assertAlmostEqual(test_case[1], result)
