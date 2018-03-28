@@ -24,8 +24,6 @@ setup(
     install_requires=[
         'gql-fork==0.2.0',
         'requests==2.13.0',
-        'flake8==3.5.0',
-        'flake8-config-yoctol==0.0.9',
     ],
     long_description=long_description,
     classifiers=[
