@@ -6,7 +6,7 @@ def intent_topk_accuracy_score(
         y_true: List[str],
         k: int = 1,
     ) -> float:
-    top_k_pred = [pred["name"] for pred in intent_prediction[: k]]
+    top_k_pred = [pred["entity"] for pred in intent_prediction[: k]]
     accuracy_score = (
         len(set(y_true) & set(top_k_pred)) /
         len(set(y_true) | set(top_k_pred))

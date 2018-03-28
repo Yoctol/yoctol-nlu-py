@@ -16,9 +16,9 @@ class EntityConfusionMatrixTestCase(TestCase):
                 {
                     "entity_predictions": [
                         [
-                            {"name": "1", "value": "1"},
-                            {"name": "2", "value": "2"},
-                            {"name": "3", "value": "3"},
+                            {"entity": "1", "value": "1"},
+                            {"entity": "2", "value": "2"},
+                            {"entity": "3", "value": "3"},
                         ],
                     ],
                     "utterances": ["123"],

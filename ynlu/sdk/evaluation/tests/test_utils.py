@@ -63,15 +63,15 @@ class OverlappingScoreTestCase(TestCase):
                 "++a-b-c",
                 [
                     {
-                        "name": "1",
+                        "entity": "1",
                         "value": "a",
                     },
                     {
-                        "name": "2",
+                        "entity": "2",
                         "value": "b",
                     },
                     {
-                        "name": "3",
+                        "entity": "3",
                         "value": "c",
                     },
                 ],

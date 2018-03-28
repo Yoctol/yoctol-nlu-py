@@ -9,9 +9,9 @@ class OverlappingScoreTestCase(TestCase):
             (
                 {
                     "entity_prediction": [
-                        {"name": "1", "value": "1"},
-                        {"name": "2", "value": "2"},
-                        {"name": "3", "value": "3"},
+                        {"entity": "1", "value": "1"},
+                        {"entity": "2", "value": "2"},
+                        {"entity": "3", "value": "3"},
                     ],
                     "utterance": "123",
                     "y_true": ["4", "5", "6"],
@@ -22,9 +22,9 @@ class OverlappingScoreTestCase(TestCase):
             (
                 {
                     "entity_prediction": [
-                        {"name": "1", "value": "1"},
-                        {"name": "2", "value": "2"},
-                        {"name": "3", "value": "3"},
+                        {"entity": "1", "value": "1"},
+                        {"entity": "2", "value": "2"},
+                        {"entity": "3", "value": "3"},
                     ],
                     "utterance": "123",
                     "y_true": ["4", "DONT_CARE", "6"],
@@ -35,9 +35,9 @@ class OverlappingScoreTestCase(TestCase):
             (
                 {
                     "entity_prediction": [
-                        {"name": "1", "value": "1"},
-                        {"name": "2", "value": "2"},
-                        {"name": "3", "value": "3"},
+                        {"entity": "1", "value": "1"},
+                        {"entity": "2", "value": "2"},
+                        {"entity": "3", "value": "3"},
                     ],
                     "utterance": "123",
                     "y_true": ["4", "2", "6"],
@@ -48,9 +48,9 @@ class OverlappingScoreTestCase(TestCase):
             (
                 {
                     "entity_prediction": [
-                        {"name": "1", "value": "1"},
-                        {"name": "2", "value": "2"},
-                        {"name": "3", "value": "3"},
+                        {"entity": "1", "value": "1"},
+                        {"entity": "2", "value": "2"},
+                        {"entity": "3", "value": "3"},
                     ],
                     "utterance": "123",
                     "y_true": ["DONT_CARE", "DONT_CARE", "DONT_CARE"],
@@ -62,9 +62,9 @@ class OverlappingScoreTestCase(TestCase):
                 {
 
                     "entity_prediction": [
-                        {"name": "1", "value": "1"},
-                        {"name": "DONT_CARE", "value": "2"},
-                        {"name": "DONT_CARE", "value": "3"},
+                        {"entity": "1", "value": "1"},
+                        {"entity": "DONT_CARE", "value": "2"},
+                        {"entity": "DONT_CARE", "value": "3"},
                     ],
                     "utterance": "123",
                     "y_true": ["DONT_CARE", "2", "3"],
@@ -75,9 +75,9 @@ class OverlappingScoreTestCase(TestCase):
             (
                 {
                     "entity_prediction": [
-                        {"name": "1", "value": "1"},
-                        {"name": "2", "value": "2"},
-                        {"name": "3", "value": "3"},
+                        {"entity": "1", "value": "1"},
+                        {"entity": "2", "value": "2"},
+                        {"entity": "3", "value": "3"},
                     ],
                     "utterance": "123",
                     "y_true": ["DONT_CARE", "2", "3"],
@@ -88,9 +88,9 @@ class OverlappingScoreTestCase(TestCase):
             (
                 {
                     "entity_prediction": [
-                        {"name": "1", "value": "1"},
-                        {"name": "2", "value": "2"},
-                        {"name": "3", "value": "3"},
+                        {"entity": "1", "value": "1"},
+                        {"entity": "2", "value": "2"},
+                        {"entity": "3", "value": "3"},
                     ],
                     "utterance": "123",
                     "y_true": ["5", "2", "3"],
@@ -101,9 +101,9 @@ class OverlappingScoreTestCase(TestCase):
             (
                 {
                     "entity_prediction": [
-                        {"name": "DONT_CARE", "value": "1"},
-                        {"name": "DONT_CARE", "value": "2"},
-                        {"name": "DONT_CARE", "value": "3"},
+                        {"entity": "DONT_CARE", "value": "1"},
+                        {"entity": "DONT_CARE", "value": "2"},
+                        {"entity": "DONT_CARE", "value": "3"},
                     ],
                     "utterance": "123",
 
@@ -115,9 +115,9 @@ class OverlappingScoreTestCase(TestCase):
             (
                 {
                     "entity_prediction": [
-                        {"name": "1", "value": "1"},
-                        {"name": "2", "value": "2"},
-                        {"name": "3", "value": "3"},
+                        {"entity": "1", "value": "1"},
+                        {"entity": "2", "value": "2"},
+                        {"entity": "3", "value": "3"},
                     ],
                     "utterance": "123",
                     "y_true": ["1", "2", "3"],

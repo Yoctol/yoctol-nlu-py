@@ -1,7 +1,8 @@
 from typing import List
 import re
 
-NOT_ENTITY = "DONT_CARE"
+from ynlu.sdk.evaluation import NOT_ENTITY
+
 
 SUB_PROG = re.compile(r"<[^\<\>]*?>(?P<KEEP>[^\<\>]*?)</[^\<\>]*?>")
 FINDALL_PROG = re.compile(r"<([^\<\>]*?)>([^\<\>]*?)</")
@@ -46,6 +47,6 @@ def preprocess_entity_prediction(
                 raise ValueError(
                     "Word {} can not be found in {}".format(char, utterance),
                 )
-            entities[start_idx] = pred["name"]
+            entities[start_idx] = pred["entity"]
             begin_index = start_idx + len(char)
     return entities
