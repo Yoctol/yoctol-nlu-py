@@ -30,6 +30,7 @@ setup(
         "requests==2.13.0",
         "matplotlib==2.2.2",
         "sklearn==0.0",
+        'uttut>=0.2.0',
     ],
     long_description=long_description,
     classifiers=[
