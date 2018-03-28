@@ -12,9 +12,9 @@ class TopKAccuracyScoreTestCase(TestCase):
             (
                 {
                     "intent_prediction": [
-                        {"name": "1"},
-                        {"name": "2"},
-                        {"name": "3"},
+                        {"entity": "1"},
+                        {"entity": "2"},
+                        {"entity": "3"},
                     ],
                     "y_true": ["1", "3"],
                     "k": 1,
@@ -24,9 +24,9 @@ class TopKAccuracyScoreTestCase(TestCase):
             (
                 {
                     "intent_prediction": [
-                        {"name": "1"},
-                        {"name": "2"},
-                        {"name": "3"},
+                        {"entity": "1"},
+                        {"entity": "2"},
+                        {"entity": "3"},
                     ],
                     "y_true": ["1"],
                     "k": 1,
@@ -36,9 +36,9 @@ class TopKAccuracyScoreTestCase(TestCase):
             (
                 {
                     "intent_prediction": [
-                        {"name": "1"},
-                        {"name": "2"},
-                        {"name": "3"},
+                        {"entity": "1"},
+                        {"entity": "2"},
+                        {"entity": "3"},
                     ],
                     "y_true": ["1", "3", "7", "5"],
                     "k": 1,
@@ -48,9 +48,9 @@ class TopKAccuracyScoreTestCase(TestCase):
             (
                 {
                     "intent_prediction": [
-                        {"name": "1"},
-                        {"name": "2"},
-                        {"name": "3"},
+                        {"entity": "1"},
+                        {"entity": "2"},
+                        {"entity": "3"},
                     ],
                     "y_true": ["5"],
                     "k": 1,
@@ -68,9 +68,9 @@ class TopKAccuracyScoreTestCase(TestCase):
             (
                 {
                     "intent_prediction": [
-                        {"name": "1"},
-                        {"name": "2"},
-                        {"name": "3"},
+                        {"entity": "1"},
+                        {"entity": "2"},
+                        {"entity": "3"},
                     ],
                     "y_true": ["1", "3"],
                     "k": 3,
@@ -80,9 +80,9 @@ class TopKAccuracyScoreTestCase(TestCase):
             (
                 {
                     "intent_prediction": [
-                        {"name": "1"},
-                        {"name": "2"},
-                        {"name": "3"},
+                        {"entity": "1"},
+                        {"entity": "2"},
+                        {"entity": "3"},
                     ],
                     "y_true": ["1"],
                     "k": 3,
@@ -92,9 +92,9 @@ class TopKAccuracyScoreTestCase(TestCase):
             (
                 {
                     "intent_prediction": [
-                        {"name": "1"},
-                        {"name": "2"},
-                        {"name": "3"},
+                        {"entity": "1"},
+                        {"entity": "2"},
+                        {"entity": "3"},
                     ],
                     "y_true": ["1", "3", "7", "5"],
                     "k": 3,
@@ -104,9 +104,9 @@ class TopKAccuracyScoreTestCase(TestCase):
             (
                 {
                     "intent_prediction": [
-                        {"name": "1"},
-                        {"name": "2"},
-                        {"name": "3"},
+                        {"entity": "1"},
+                        {"entity": "2"},
+                        {"entity": "3"},
                     ],
                     "y_true": ["5"],
                     "k": 3,
@@ -116,8 +116,8 @@ class TopKAccuracyScoreTestCase(TestCase):
             (
                 {
                     "intent_prediction": [
-                        {"name": "1"},
-                        {"name": "2"},
+                        {"entity": "1"},
+                        {"entity": "2"},
                     ],
                     "y_true": ["1", "3", "7", "5"],
                     "k": 3,
@@ -136,19 +136,19 @@ class TopKAccuracyScoreTestCase(TestCase):
                 {
                     "intent_predictions": [
                         [
-                            {"name": "1"},
-                            {"name": "2"},
-                            {"name": "3"},
+                            {"entity": "1"},
+                            {"entity": "2"},
+                            {"entity": "3"},
                         ],
                         [
-                            {"name": "2"},
-                            {"name": "4"},
-                            {"name": "6"},
+                            {"entity": "2"},
+                            {"entity": "4"},
+                            {"entity": "6"},
                         ],
                         [
-                            {"name": "7"},
-                            {"name": "3"},
-                            {"name": "5"},
+                            {"entity": "7"},
+                            {"entity": "3"},
+                            {"entity": "5"},
                         ],
                     ],
                     "y_trues": [["1"], ["3"], ["5"]],
@@ -168,16 +168,16 @@ class TopKAccuracyScoreTestCase(TestCase):
                 {
                     "intent_predictions": [
                         [
-                            {"name": "1"},
-                            {"name": "2"},
+                            {"entity": "1"},
+                            {"entity": "2"},
                         ],
                         [
-                            {"name": "2"},
-                            {"name": "4"},
-                            {"name": "6"},
+                            {"entity": "2"},
+                            {"entity": "4"},
+                            {"entity": "6"},
                         ],
                         [
-                            {"name": "7"},
+                            {"entity": "7"},
                         ],
                     ],
                     "y_trues": [["1"], ["3"], ["7"]],
@@ -189,16 +189,16 @@ class TopKAccuracyScoreTestCase(TestCase):
                 {
                     "intent_predictions": [
                         [
-                            {"name": "1"},
-                            {"name": "2"},
+                            {"entity": "1"},
+                            {"entity": "2"},
                         ],
                         [
-                            {"name": "2"},
-                            {"name": "4"},
-                            {"name": "6"},
+                            {"entity": "2"},
+                            {"entity": "4"},
+                            {"entity": "6"},
                         ],
                         [
-                            {"name": "7"},
+                            {"entity": "7"},
                         ],
                     ],
                     "y_trues": [["1", "10", "12"], ["3", "2"], ["7", "9"]],
