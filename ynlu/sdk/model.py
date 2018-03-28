@@ -76,11 +76,6 @@ class Model(object):
             }
             for ans in intents_prediction
         ]
-        intents_prediction = sorted(
-            intents_prediction,
-            key=lambda x: x['score'],
-            reverse=True,
-        )
 
         entities_prediction = result['predict']['entities']
         entities_prediction = [
@@ -91,11 +86,6 @@ class Model(object):
             }
             for ans in entities_prediction
         ]
-        entities_prediction = sorted(
-            entities_prediction,
-            key=lambda x: x['score'],
-            reverse=True,
-        )
 
         return intents_prediction, entities_prediction
 
