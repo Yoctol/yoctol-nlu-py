@@ -103,6 +103,5 @@ class Model(object):
             self,
             utterances: List[str],
         ) -> List[Tuple[List[Dict], List[Dict]]]:
-        intents_predictions = [self.predict(utt)[0] for utt in utterances]
-        entities_predictions = [self.predict(utt)[1] for utt in utterances]
-        return intents_predictions, entities_predictions
+        intents_predictions, entities_predictions = zip(*[self.predict(utt) for utt in utterances])
+        return list(intents_predictions), list(entities_predictions)
