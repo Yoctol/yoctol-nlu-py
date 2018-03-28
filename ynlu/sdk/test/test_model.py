@@ -7,12 +7,12 @@ FAKE_QUERY = {
     'predict': {
         'intents': [
             {
-                'name': '測試1',
-                'score': 0.17,
-            },
-            {
                 'name': '測試2',
                 'score': 0.78,
+            },
+            {
+                'name': '測試1',
+                'score': 0.17,
             },
         ],
         'entities': [
