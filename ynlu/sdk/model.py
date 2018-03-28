@@ -1,6 +1,7 @@
 from typing import List, Dict, Tuple
 import re
 
+from uttut.elements import Intent, Entity
 from gql import Client, gql
 
 
@@ -71,7 +72,7 @@ class Model(object):
         intents_prediction = result['predict']['intents']
         intents_prediction = [
             {
-                'intent': ans['name'],
+                'intent': Intent(name=ans['name']),
                 'score': ans['score'],
             }
             for ans in intents_prediction
@@ -80,8 +81,12 @@ class Model(object):
         entities_prediction = result['predict']['entities']
         entities_prediction = [
             {
-                'entity': ans['name'],
-                'value': ans['value'],
+                'entity': Entity(
+                    name=ans['name'],
+                    value=ans['value'],
+                    start=ans.get('start', 0),
+                    end=ans.get('end', 0),
+                ),
                 'score': ans['score'],
             }
             for ans in entities_prediction

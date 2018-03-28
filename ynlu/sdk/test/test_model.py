@@ -1,5 +1,7 @@
 from unittest import TestCase
 
+from uttut.elements import Intent, Entity
+
 from ..model import Model
 
 
@@ -17,13 +19,13 @@ FAKE_QUERY = {
         ],
         'entities': [
             {
-                'name': 'Entity在哪裡',
-                'value': 3,
+                'name': 'PLACE',
+                'value': '台北',
                 'score': 0.8877,
             },
             {
-                'name': 'ok123',
-                'value': 8,
+                'name': 'TEMP',
+                'value': '37度C',
                 'score': 0.7788,
             },
         ],
@@ -31,23 +33,31 @@ FAKE_QUERY = {
 }
 FAKE_INTENT_SHOULD_RETURN = [
     {
-        'intent': '測試2',
+        'intent': Intent('測試2'),
         'score': 0.78,
     },
     {
-        'intent': '測試1',
+        'intent': Intent('測試1'),
         'score': 0.17,
     },
 ]
 FAKE_ENTITY_SHOULD_RETURN = [
     {
-        'entity': 'Entity在哪裡',
-        'value': 3,
+        'entity': Entity(
+            name='PLACE',
+            value='台北',
+            start=0,
+            end=0,
+        ),
         'score': 0.8877,
     },
     {
-        'entity': 'ok123',
-        'value': 8,
+        'entity': Entity(
+            name='TEMP',
+            value='37度C',
+            start=0,
+            end=0,
+        ),
         'score': 0.7788,
     },
 ]
