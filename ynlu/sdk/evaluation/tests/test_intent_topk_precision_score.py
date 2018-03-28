@@ -19,7 +19,7 @@ class TopKAccuracyScoreTestCase(TestCase):
                     "y_true": ["1", "3"],
                     "k": 1,
                 },
-                0.499999999999,
+                1. / 2,
             ),
             (
                 {
@@ -31,7 +31,7 @@ class TopKAccuracyScoreTestCase(TestCase):
                     "y_true": ["1"],
                     "k": 1,
                 },
-                0.999999999999,
+                1. / 1,
             ),
             (
                 {
@@ -43,7 +43,7 @@ class TopKAccuracyScoreTestCase(TestCase):
                     "y_true": ["1", "3", "7", "5"],
                     "k": 1,
                 },
-                0.25,
+                1. / 4,
             ),
             (
                 {
@@ -55,7 +55,7 @@ class TopKAccuracyScoreTestCase(TestCase):
                     "y_true": ["5"],
                     "k": 1,
                 },
-                0.0,
+                0. / 1,
             ),
         ]
         for i, test_case in enumerate(test_cases):
@@ -75,7 +75,7 @@ class TopKAccuracyScoreTestCase(TestCase):
                     "y_true": ["1", "3"],
                     "k": 3,
                 },
-                1.0,
+                2. / 2,
             ),
             (
                 {
@@ -87,7 +87,7 @@ class TopKAccuracyScoreTestCase(TestCase):
                     "y_true": ["1"],
                     "k": 3,
                 },
-                1.0,
+                1. / 1,
             ),
             (
                 {
@@ -99,7 +99,7 @@ class TopKAccuracyScoreTestCase(TestCase):
                     "y_true": ["1", "3", "7", "5"],
                     "k": 3,
                 },
-                0.5,
+                2. / 4,
             ),
             (
                 {
@@ -111,7 +111,7 @@ class TopKAccuracyScoreTestCase(TestCase):
                     "y_true": ["5"],
                     "k": 3,
                 },
-                0.0,
+                0. / 1,
             ),
             (
                 {
@@ -122,7 +122,7 @@ class TopKAccuracyScoreTestCase(TestCase):
                     "y_true": ["1", "3", "7", "5"],
                     "k": 3,
                 },
-                0.25,
+                1. / 4,
             ),
         ]
         for i, test_case in enumerate(test_cases):
@@ -154,7 +154,7 @@ class TopKAccuracyScoreTestCase(TestCase):
                     "y_trues": [["1"], ["3"], ["5"]],
                     "k": 1,
                 },
-                0.33333333333,
+                (1. / 1 + 0. / 1 + 0. / 1) / 3,
             ),
         ]
         for i, test_case in enumerate(test_cases):
@@ -183,7 +183,7 @@ class TopKAccuracyScoreTestCase(TestCase):
                     "y_trues": [["1"], ["3"], ["7"]],
                     "k": 3,
                 },
-                0.6666666666666,
+                (1. / 1 + 0. / 1 + 1. / 1) / 3,
             ),
             (
                 {
@@ -204,7 +204,7 @@ class TopKAccuracyScoreTestCase(TestCase):
                     "y_trues": [["1", "10", "12"], ["3", "2"], ["7", "9"]],
                     "k": 3,
                 },
-                0.4444444444444444,
+                (1. / 3 + 1. / 2 + 1. / 2) / 3,
             ),
         ]
         for i, test_case in enumerate(test_cases):
