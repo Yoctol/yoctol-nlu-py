@@ -4,7 +4,7 @@ from .utils import preprocess_entity_prediction
 from ynlu.sdk.evaluation import NOT_ENTITY
 
 
-def entity_overlapping_score(
+def single__entity_overlapping_score(
         utterance: str,
         entity_prediction: List[dict],
         y_true: List[str],
@@ -33,3 +33,26 @@ def entity_overlapping_score(
             penalty += wrong_penalty_rate
     overlapping_score = 1 - penalty / len(y_pred)
     return overlapping_score
+
+
+def entity_overlapping_score(
+        utterances: List[str],
+        entity_predictions: List[List[dict]],
+        y_trues: List[List[str]],
+        wrong_penalty_rate: float = 2.0,
+    ) -> float:
+    if len(entity_predictions) != len(y_trues):
+        raise ValueError(
+            "Entity predictions and labels must have same amount!!!",
+        )
+    overlapping_scores = []
+    for utt, pred, true in zip(utterances, entity_predictions, y_trues):
+        overlapping_scores.append(
+            single__entity_overlapping_score(
+                utterance=utt,
+                entity_prediction=pred,
+                y_true=true,
+                wrong_penalty_rate=wrong_penalty_rate,
+            ),
+        )
+    return sum(overlapping_scores) / len(entity_predictions)
