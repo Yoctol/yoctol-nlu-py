@@ -39,7 +39,7 @@ def single__intent_topk_recall_score(
         )
         >>> print(recal)
         0.5
-    """
+    """ # noqa
 
     top_k_pred = [pred["entity"] for pred in intent_prediction[: k]]
     recall_score = (
@@ -63,7 +63,7 @@ def intent_topk_recall_score(
     .. math::
       \\text{Recall of all utterances}=\\frac{1}{n}\\sum_{i=1}^{n}\\frac{|\\text{pred}_i \\cap \\text{true}_i|}{|\\text{true}_i|}
 
-    """
+    """  # noqa
 
     if len(intent_predictions) != len(y_trues):
         raise ValueError(
