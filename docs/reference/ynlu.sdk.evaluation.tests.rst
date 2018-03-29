@@ -36,6 +36,14 @@ ynlu.sdk.evaluation.tests.test\_intent\_topk\_precision\_score module
     :undoc-members:
     :show-inheritance:
 
+ynlu.sdk.evaluation.tests.test\_intent\_topk\_recall\_score module
+------------------------------------------------------------------
+
+.. automodule:: ynlu.sdk.evaluation.tests.test_intent_topk_recall_score
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ynlu.sdk.evaluation.tests.test\_utils module
 --------------------------------------------
 
