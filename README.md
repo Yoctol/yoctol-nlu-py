@@ -41,3 +41,29 @@ model = client.get_model_by_name(names[0])
 # Predict
 intent_result, entity_result = model.predict('飲料喝到飽')
 ```
+
+## Documentation
+
+We rely on Sphinx for user and API documentation.
+
+You can run just make to do rebuild the API stubs and then build the HTML documentation.
+
+```
+cd docs
+make # equivalent to `make apidoc && make html`
+```
+
+To only build the html pages:
+
+```
+cd docs
+make html
+```
+
+To just re-generate the API reference.
+
+```
+cd docs
+make apidoc # calls sphinx-apidoc
+```
+Run `make help` for a full list of build options.
