@@ -13,5 +13,7 @@ exclude =
     venv/
     env/
     build/
+    # sphinx docs
+    docs/
 max_complexity = 10
 statistics = true
