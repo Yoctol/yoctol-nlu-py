@@ -35,6 +35,14 @@ ynlu.sdk.evaluation.exceptions module
     :undoc-members:
     :show-inheritance:
 
+ynlu.sdk.evaluation.intent\_accuracy\_score\_with\_threshold module
+-------------------------------------------------------------------
+
+.. automodule:: ynlu.sdk.evaluation.intent_accuracy_score_with_threshold
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ynlu.sdk.evaluation.intent\_precision\_recall module
 ----------------------------------------------------
 

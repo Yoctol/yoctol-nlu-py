@@ -12,14 +12,15 @@ def intent_accuracy_score_with_threshold(
         sample_weight: List[float] = None,
     ) -> float:
     """Top1 accuracy classification score subject to score > threshold
+
     Only the top1 predicted intent by score will be considered
     when computing accuracy. Moreover, the score of the predicted
     label should be more than threshold. Otherwise, it would be
-    replaced with a "UNK" token before computing accuracy score.
+    replaced with a ``UNK`` token before computing accuracy score.
     That is to say, the situation ``correctly classified`` occurs
     only when two requirements are satisfied:
-    (1) the top1 predicted label is the same as true label and
-    (2) score of predicted label is larger than threshold.
+        1. the top1 predicted label is the same as true label and
+        2. score of predicted label is larger than threshold.
 
 
     Args:
@@ -43,15 +44,15 @@ def intent_accuracy_score_with_threshold(
             classified sample.
 
     Examples:
-    >>> from ynlu.sdk.evaluation import intent_accuracy_score_with_threshold
-    >>> intent_accuracy_score_with_threshold(
-        intent_predictions=[
-            [{"intent": "a", "score": 0.7}],
-            [{"intent": "b", "score": 0.3}],
-        ],
-        y_trues=["a", "b"],
-    )
-    >>> 0.5
+        >>> from ynlu.sdk.evaluation import intent_accuracy_score_with_threshold
+        >>> intent_accuracy_score_with_threshold(
+                intent_predictions=[
+                    [{"intent": "a", "score": 0.7}],
+                    [{"intent": "b", "score": 0.3}],
+                ],
+                y_trues=["a", "b"],
+            )
+        >>> 0.5
 
     """
 
