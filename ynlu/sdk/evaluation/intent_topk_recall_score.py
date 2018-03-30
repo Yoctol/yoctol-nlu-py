@@ -41,7 +41,7 @@ def single__intent_topk_recall_score(
         0.5
     """ # noqa
 
-    top_k_pred = [pred["entity"] for pred in intent_prediction[: k]]
+    top_k_pred = [pred["intent"] for pred in intent_prediction[: k]]
     recall_score = (
         len(set(y_true) & set(top_k_pred)) /
         len(top_k_pred)
