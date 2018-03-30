@@ -3,6 +3,7 @@ from ..utils import (
     remove_annotation,
     preprocess_annotated_utterance,
     preprocess_entity_prediction,
+    preprocess_intent_prediction_by_threshold,
 )
 
 
@@ -86,3 +87,33 @@ class OverlappingScoreTestCase(TestCase):
                     not_entity="n",
                 )
                 self.assertEqual(test_case[2], result)
+
+    def test_preprocess_intent_prediction_by_threshold(self):
+        test_cases = [
+            (
+                [[{"intent": "a", "score": 0.7}]],
+                ["a"],
+            ),
+            (
+                [[{"intent": "a", "score": 0.3}]],
+                ["UNK"],
+            ),
+            (
+                [
+                    [
+                        {"intent": "a", "score": 0.3},
+                    ],
+                    [
+                        {"intent": "b", "score": 0.7},
+                        {"intent": "c", "score": 0.2},
+                    ],
+                ],
+                ["UNK", "b"],
+            ),
+        ]
+        for i, test_case in enumerate(test_cases):
+            with self.subTest(i=i):
+                result = preprocess_intent_prediction_by_threshold(
+                    test_case[0],
+                )
+                self.assertEqual(test_case[1], result)
