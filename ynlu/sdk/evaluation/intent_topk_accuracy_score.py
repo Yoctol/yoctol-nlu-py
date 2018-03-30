@@ -6,7 +6,7 @@ def single__intent_topk_accuracy_score(
         y_true: List[str],
         k: int = 1,
     ) -> float:
-    top_k_pred = [pred["entity"] for pred in intent_prediction[: k]]
+    top_k_pred = [pred["intent"] for pred in intent_prediction[: k]]
     accuracy_score = (
         len(set(y_true) & set(top_k_pred)) /
         len(set(y_true) | set(top_k_pred))
@@ -21,7 +21,7 @@ def intent_topk_accuracy_score(
     ) -> float:
     if len(intent_predictions) != len(y_trues):
         raise ValueError(
-            "Intent prediction and label must have same amount!!!",
+            "Intent predictions and labels must have same amount!!!",
         )
     accuracy_scores = []
     for y_pred, y_true in zip(intent_predictions, y_trues):
