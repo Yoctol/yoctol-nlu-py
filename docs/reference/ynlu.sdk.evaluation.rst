@@ -59,6 +59,14 @@ ynlu.sdk.evaluation.intent\_precision\_score\_with\_threshold module
     :undoc-members:
     :show-inheritance:
 
+ynlu.sdk.evaluation.intent\_recall\_score\_with\_threshold module
+-----------------------------------------------------------------
+
+.. automodule:: ynlu.sdk.evaluation.intent_recall_score_with_threshold
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ynlu.sdk.evaluation.intent\_topk\_accuracy\_score module
 --------------------------------------------------------
 
