@@ -27,13 +27,14 @@ def intent_precision_score_with_threshold(
         intent_predictions (list of list of dicts):
             A list of intent_prediction which can contains all possible
             intent sorted by score.
-        y_trues (list of strings): A list of ground truth (correct) intents.
+        y_trues (list of strings):
+            A list of ground truth (correct) intents.
         threshold (float):
             A threshold which limits the efficacy of top1
             predicted intent if its score is less than threshold.
         average (string):
-            Options are as follows -
-                [‘None’, ‘binary’, ‘micro’, ‘macro’, ‘samples’, ‘weighted’(default)]
+            Options are as follows:
+                [‘None’, ‘binary’, ‘micro’, ‘macro’, ‘samples’, ‘weighted’(default)].
             Please look at
              ``http://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html``
             for more details.
