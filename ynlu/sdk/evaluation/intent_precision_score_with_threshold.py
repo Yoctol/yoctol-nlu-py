@@ -2,6 +2,7 @@ from typing import List, Dict
 from sklearn.metrics import precision_score
 
 from .utils import preprocess_intent_prediction_by_threshold
+from ynlu.sdk.evaluation import UNKNOWN
 
 
 def intent_precision_score_with_threshold(
@@ -72,9 +73,11 @@ def intent_precision_score_with_threshold(
         intent_predictions=intent_predictions,
         threshold=threshold,
     )
+    labels = sorted(set(y_trues) | set(y_preds) - set([UNKNOWN]))
     return precision_score(
         y_true=y_trues,
         y_pred=y_preds,
         average=average,
+        labels=labels,
         sample_weight=sample_weight,
     )
