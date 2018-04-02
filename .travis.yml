@@ -7,4 +7,4 @@ python:
 install: "pip install -U pip wheel && pip install -U cython && pip install -Ur requirements.txt"
 before_script: "flake8"
 # command to run tests
-script: python -m unittest
+script: python ynlu/sdk/evaluation/setup_matplotlib.py && python -m unittest
