@@ -5,6 +5,6 @@ python:
   - "3.6"
 # command to install dependencies
 install: "pip install -U pip wheel && pip install -U cython && pip install -Ur requirements.txt"
-before_script: "python ynlu/sdk/evaluation/setup_matplotlib.py && flake8"
+before_script: "python ynlu/sdk/evaluation/setup_matplotlib.py && flake8 && cp matplotlibrc.ci matplotlibrc"
 # command to run tests
 script: python -m unittest
