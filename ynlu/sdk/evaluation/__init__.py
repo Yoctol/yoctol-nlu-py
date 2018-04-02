@@ -1,4 +1,5 @@
 NOT_ENTITY = "DONT_CARE"
+UNKNOWN = "UNK"
 
 from .intent_topk_accuracy_score import (  # noqa
     single__intent_topk_accuracy_score,
@@ -7,6 +8,9 @@ from .intent_topk_accuracy_score import (  # noqa
 from .intent_topk_precision_score import (  # noqa
     single__intent_topk_precision_score,
     intent_topk_precision_score,
+)
+from .intent_accuracy_score_with_threshold import (  # noqa
+    intent_accuracy_score_with_threshold,
 )
 from .entity_overlapping_score import (  # noqa
     single__entity_overlapping_score,

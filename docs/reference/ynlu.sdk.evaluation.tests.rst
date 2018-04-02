@@ -20,6 +20,14 @@ ynlu.sdk.evaluation.tests.test\_entity\_overlapping\_ratio module
     :undoc-members:
     :show-inheritance:
 
+ynlu.sdk.evaluation.tests.test\_intent\_accuracy\_score\_with\_threshold module
+-------------------------------------------------------------------------------
+
+.. automodule:: ynlu.sdk.evaluation.tests.test_intent_accuracy_score_with_threshold
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ynlu.sdk.evaluation.tests.test\_intent\_topk\_accuracy\_score module
 --------------------------------------------------------------------
 
