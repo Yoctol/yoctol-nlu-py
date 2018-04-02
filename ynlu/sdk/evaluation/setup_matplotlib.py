@@ -1,7 +1,3 @@
-def setup_matplotib():
-    import matplotlib
-    matplotlib.use('Agg')
+import matplotlib
 
-
-if __name__ == '__main__':
-    setup_matplotib()
+matplotlib.use('Agg')
