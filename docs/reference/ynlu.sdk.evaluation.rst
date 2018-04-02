@@ -6,6 +6,7 @@ Subpackages
 
 .. toctree::
 
+    ynlu.sdk.evaluation.plot
     ynlu.sdk.evaluation.tests
 
 Submodules
