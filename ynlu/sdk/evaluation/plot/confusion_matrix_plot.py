@@ -12,9 +12,26 @@ FONT_PATH = join(ROOT_DIR, "data/simhei.ttf")
 DEFAULT_FONT = fm.FontProperties(fname=FONT_PATH)
 
 
+def _check_input_data_format(
+        confusion_matrix: np.ndarray,
+        indices: List[str],
+    ) -> None:
+    if confusion_matrix.shape[0] != confusion_matrix.shape[1]:
+        raise ValueError(
+            "confusion matrix should be a squared matrix.",
+        )
+    if confusion_matrix.shape[0] != len(indices):
+        raise ValueError(
+            """
+            The shape of confusion matrix should be the same as
+            the length of indices.
+            """,
+        )
+
+
 def plot_confusion_matrix(
         confusion_matrix: np.ndarray,
-        unique_entities: List[str],
+        indices: List[str],
         normalize: bool = False,
         output_path: str = None,
         title: str = "Confusion Matrix",
@@ -23,6 +40,11 @@ def plot_confusion_matrix(
         font: fm.FontProperties = DEFAULT_FONT,
         block: bool = True,
     ) -> None:
+
+    _check_input_data_format(
+        confusion_matrix=confusion_matrix,
+        indices=indices,
+    )
 
     plt.figure(figsize=figure_size)
 
@@ -39,9 +61,9 @@ def plot_confusion_matrix(
     )
     plt.title(title, fontproperties=font)
     plt.colorbar()
-    tick_marks = np.arange(len(unique_entities))
-    plt.xticks(tick_marks, unique_entities, rotation=45, fontproperties=font)
-    plt.yticks(tick_marks, unique_entities, fontproperties=font)
+    tick_marks = np.arange(len(indices))
+    plt.xticks(tick_marks, indices, rotation=45, fontproperties=font)
+    plt.yticks(tick_marks, indices, fontproperties=font)
 
     fmt = '.2f' if normalize else 'd'
     thresh = confusion_matrix.max() / 2.
