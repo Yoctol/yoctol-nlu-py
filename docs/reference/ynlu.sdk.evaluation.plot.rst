@@ -11,6 +11,14 @@ Subpackages
 Submodules
 ----------
 
+ynlu.sdk.evaluation.plot.confusion\_matrix\_plot module
+-------------------------------------------------------
+
+.. automodule:: ynlu.sdk.evaluation.plot.confusion_matrix_plot
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 ynlu.sdk.evaluation.plot.line\_plot module
 ------------------------------------------
 

@@ -21,5 +21,4 @@ from .entity_overlapping_score import (  # noqa
 )
 from .entity_confusion_matrix import (   # noqa
     entity_confusion_matrix,
-    entity_confusion_matrix_figure,
 )
