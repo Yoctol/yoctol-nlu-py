@@ -82,7 +82,8 @@ def plot_lines(
     lines = []
     line_names = []
     for i, input_datum in enumerate(data):
-        plot_params = {**default_plot_params, **input_datum}
+        plot_params = default_plot_params
+        plot_params.update(input_datum)
         del plot_params["x"], plot_params["y"]
         line, = plt.plot(input_datum["x"], input_datum["y"], **plot_params)
         lines.append(line)
