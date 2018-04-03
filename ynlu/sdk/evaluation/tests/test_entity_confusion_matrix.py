@@ -4,7 +4,6 @@ import numpy as np
 
 from ..entity_confusion_matrix import (
     entity_confusion_matrix,
-    # entity_confusion_matrix_figure,
 )
 
 
@@ -47,26 +46,3 @@ class EntityConfusionMatrixTestCase(TestCase):
                 self.assertEqual(
                     test_case[1][1], result[1],
                 )
-
-    # def test_entity_confusion_matrix_figure(self):
-    #     test_cases = [
-    #         {
-    #             "confusion_matrix": np.array(
-    #                 [[1, 2, 3],
-    #                  [4, 5, 6],
-    #                  [7, 8, 9]]),
-    #             "unique_entities": ["a", "b", "c"],
-    #             "title": "test",
-    #         },
-    #         {
-    #             "confusion_matrix": np.array(
-    #                 [[1, 2, 3],
-    #                  [4, 5, 6],
-    #                  [7, 8, 9]]),
-    #             "unique_entities": ["a", "b", "c"],
-    #             "normalize": True,
-    #             "title": "test",
-    #         },
-    #     ]
-    #     for test_case in test_cases:
-    #         entity_confusion_matrix_figure(**test_case)
