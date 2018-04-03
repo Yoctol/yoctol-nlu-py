@@ -29,6 +29,7 @@ setup(
         "numpy==1.14.2",
         "requests==2.13.0",
         "matplotlib==2.2.2",
+        "seaborn==0.8.1",
         "sklearn==0.0",
     ],
     long_description=long_description,
