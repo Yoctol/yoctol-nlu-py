@@ -40,7 +40,48 @@ def plot_confusion_matrix(
         font: fm.FontProperties = DEFAULT_FONT,
         block: bool = True,
     ) -> None:
+    """Plot confusion matrix
 
+    Args:
+        confusion_matrix (a squared numpy matrix):
+            The outcome of ``sklearn.metrics.confusion_matrix`` is expected.
+        indices (list of string):
+            List of strings to index the matrix.
+            The expected indices should be the same as the input argument ``labels``
+            when you generate confusion matrix.
+        normalize (bool):
+            If True,
+
+        .. math::
+          \\text{confusion matrix}_{ij} = \\frac{\\text{confusion matrix}_{ij}}{\sum_{j=1}^{n}\\text{confusion matrix}_{ij}}
+
+        output_path (string, default = None):
+            The place where the output figure would be stored.
+            If it is None, the figure will be shown on screen
+            automatically.
+        title (string, default = "Confusion Matrix"):
+            The title of figure.
+        figure_size (a pair of integers, default = (8, 6)):
+            The height and width of the output figure.
+        cmap (color map):
+            Matplotlib builtin colormaps.
+        font (font properties):
+            Matplotlib font properties.
+        block (bool):
+            if False, the figure will not be shown up even if output_path
+            is None. This argument is left for unittest.
+
+    Returns: None
+
+    Example:
+        >>> import numpy as np
+        >>> from ynlu.sdk.evaluation.plot import plot_confusion_matrix
+        >>> plot_confusion_matrix(
+                confusion_matrix=np.random.rand(4,4),
+                indices=["a", "b", "c", "d"],
+            )
+
+    """ # noqa
     _check_input_data_format(
         confusion_matrix=confusion_matrix,
         indices=indices,
