@@ -33,15 +33,15 @@ def plot_lines(
 
     Args:
         data (list of dictionaries):
-            Dictinaries containing arguments and key words for
+            Dictionaries containing arguments and key words for
             ``matplotlib.pyplot.plot``. Basic arguments are:
-            ``x``, ``y``, ``label``(the name of line).
+            ``x``, ``y``, ``label`` (the name of line).
         title (string, default = "figure"):
-            The title of figure.
+            The title of the figure.
         x_axis_name (string, default = "x"):
-            The name shown on x axis.
+            The name to be shown on x axis.
         y_axis_name(string, default = "y"):
-            The name shown on y axis.
+            The name to be shown on y axis.
         figure_size (a pair of integers, default = (8, 6)):
             The height and width of the output figure.
         output_path (string, default = None):
@@ -54,7 +54,7 @@ def plot_lines(
             for more details.
         font_style_path (path of font style):
             If None, ``simhei.ttf`` will be used as default font style.
-            Chinese charactors are supported in this font style.
+            Chinese characters are supported in this font style.
         block (bool):
             if False, the figure will not be shown up even if output_path
             is None. This argument is left for unittest.

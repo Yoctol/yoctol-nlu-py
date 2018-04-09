@@ -55,16 +55,16 @@ def plot_confusion_matrix(
             If it is None, the figure will be shown on screen
             automatically.
         title (string, default = "Confusion Matrix"):
-            The title of figure.
+            The title of the figure.
         figure_size (a pair of integers, default = (8, 6)):
             The height and width of the output figure.
         cmap (color map):
-            Matplotlib builtin colormaps.
+            Matplotlib built-in colormaps.
         font_style_path (path of font style):
             If None, ``simhei.ttf`` will be used as default font style.
-            Chinese charactors are supported in this font style.
+            Chinese characters are supported in this font style.
         block (bool):
-            if False, the figure will not be shown up even if output_path
+            If False, the figure will not be shown up even if output_path
             is None. This argument is left for unittest.
 
     Returns: None

@@ -27,6 +27,14 @@ ynlu.sdk.evaluation.plot.line\_plot module
     :undoc-members:
     :show-inheritance:
 
+ynlu.sdk.evaluation.plot.utils module
+-------------------------------------
+
+.. automodule:: ynlu.sdk.evaluation.plot.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------
