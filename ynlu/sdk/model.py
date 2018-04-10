@@ -92,6 +92,6 @@ class Model(object):
     def batch_predict(
             self,
             utterances: List[str],
-        ) -> List[Tuple[List[Dict], List[Dict]]]:
+        ) -> Tuple[List[List[Dict]], List[List[Dict]]]:
         intents_predictions, entities_predictions = zip(*[self.predict(utt) for utt in utterances])
         return list(intents_predictions), list(entities_predictions)

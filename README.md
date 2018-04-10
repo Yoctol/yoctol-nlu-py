@@ -14,7 +14,7 @@ pip install yoctol-nlu
 
 ### Intent Classifier Service
 
-For existing classifier:
+#### Fetch Model & One Line Prediction
 ```python
 from ynlu import NLUClient
 
@@ -28,7 +28,7 @@ print(ids)
 model = client.get_model_by_id(ids[0])
 
 # Predict
-intent_result, entity_result = model.predict('飲料喝到飽')
+intent_prediction, entity_prediction = model.predict('飲料喝到飽')
 
 # Also could get the clf by clf's name
 # Get all possible clf names
@@ -39,7 +39,47 @@ print(names)
 model = client.get_model_by_name(names[0])
 
 # Predict
-intent_result, entity_result = model.predict('飲料喝到飽')
+intent_prediction, entity_prediction = model.predict('飲料喝到飽')
+```
+
+#### Evaluations for Intent
+```python
+from ynlu import NLUClient
+from ynlu.sdk.evaluation import {
+    # Accuracy
+    intent_accuracy_score_with_threshold,
+    # Precision
+    intent_precision_score_with_threshold,
+    # Recall
+    intent_recall_score_with_threshold,
+}
+
+client = NLUClient(token='YOUR_TOKEN_HERE')
+model = client.get_model_by_id('TARGET_MODEL_ID_HERE')
+
+test_data = [
+    'This is a line ',
+    'for testing the NLUClient ',
+    'and evaluating the prediction ',
+    'from the trained model. ',
+]
+
+intent_predictions, entities_predictions = model.batch_predict(test_data)
+
+# Pure Accuracy
+print(intent_accuracy_score_with_threshold(
+        intent_predictions=intent_predictions,
+        y_trues=test_data,
+        threshold=0.,
+    )
+)
+# Accuracy with threshold 0.5
+print(intent_accuracy_score_with_threshold(
+        intent_predictions=intent_predictions,
+        y_trues=test_data,
+        threshold=0.5,
+    )
+)
 ```
 
 ## Documentation
