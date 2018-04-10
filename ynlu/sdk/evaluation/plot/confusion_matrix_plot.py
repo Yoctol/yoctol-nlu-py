@@ -1,15 +1,10 @@
 import itertools
 from typing import List, Tuple
-from os.path import join, dirname, abspath
 
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
 
-
-ROOT_DIR = dirname(dirname(abspath(__file__)))
-FONT_PATH = join(ROOT_DIR, "data/simhei.ttf")
-DEFAULT_FONT = fm.FontProperties(fname=FONT_PATH)
+from .utils import plt_set_font_style
 
 
 def _check_input_data_format(
@@ -37,7 +32,7 @@ def plot_confusion_matrix(
         title: str = "Confusion Matrix",
         figure_size: Tuple[int, int] = (8, 6),
         cmap: plt.cm = plt.cm.Blues,
-        font: fm.FontProperties = DEFAULT_FONT,
+        font_style_path: str = None,
         block: bool = True,
     ) -> None:
     """Plot confusion matrix
@@ -60,15 +55,16 @@ def plot_confusion_matrix(
             If it is None, the figure will be shown on screen
             automatically.
         title (string, default = "Confusion Matrix"):
-            The title of figure.
+            The title of the figure.
         figure_size (a pair of integers, default = (8, 6)):
             The height and width of the output figure.
         cmap (color map):
-            Matplotlib builtin colormaps.
-        font (font properties):
-            Matplotlib font properties.
+            Matplotlib built-in colormaps.
+        font_style_path (path of font style):
+            If None, ``simhei.ttf`` will be used as default font style.
+            Chinese characters are supported in this font style.
         block (bool):
-            if False, the figure will not be shown up even if output_path
+            If False, the figure will not be shown up even if output_path
             is None. This argument is left for unittest.
 
     Returns: None
@@ -100,11 +96,11 @@ def plot_confusion_matrix(
         interpolation='nearest',
         cmap=cmap,
     )
-    plt.title(title, fontproperties=font)
+    plt.title(title)
     plt.colorbar()
     tick_marks = np.arange(len(indices))
-    plt.xticks(tick_marks, indices, rotation=45, fontproperties=font)
-    plt.yticks(tick_marks, indices, fontproperties=font)
+    plt.xticks(tick_marks, indices, rotation=45)
+    plt.yticks(tick_marks, indices)
 
     fmt = '.2f' if normalize else 'd'
     thresh = confusion_matrix.max() / 2.
@@ -119,6 +115,8 @@ def plot_confusion_matrix(
     plt.tight_layout()
     plt.ylabel('True Label')
     plt.xlabel('Predicted Label')
+
+    plt_set_font_style(font_style_path=font_style_path)
 
     if output_path is not None:
         plt.savefig(output_path)

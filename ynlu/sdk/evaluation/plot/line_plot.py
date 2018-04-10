@@ -3,6 +3,8 @@ from typing import List, Tuple
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+from .utils import plt_set_font_style
+
 
 def _check_data_format(data: List[dict]):
     for i, datum in enumerate(data):
@@ -23,6 +25,7 @@ def plot_lines(
         figure_size: Tuple[int, int]=(8, 6),
         output_path: str = None,
         color_palette: sns.color_palette = None,
+        font_style_path: str = None,
         block: bool = True,
     ) -> None:
     """Plot y versus x as lines and/or markers
@@ -30,14 +33,15 @@ def plot_lines(
 
     Args:
         data (list of dictionaries):
-            Several dictinaries containing arguments and key words for
-            ``matplotlib.pyplot.plot``
+            Dictionaries containing arguments and key words for
+            ``matplotlib.pyplot.plot``. Basic arguments are:
+            ``x``, ``y``, ``label`` (the name of line).
         title (string, default = "figure"):
-            The title of figure.
+            The title of the figure.
         x_axis_name (string, default = "x"):
-            The name shown on x axis.
+            The name to be shown on x axis.
         y_axis_name(string, default = "y"):
-            The name shown on y axis.
+            The name to be shown on y axis.
         figure_size (a pair of integers, default = (8, 6)):
             The height and width of the output figure.
         output_path (string, default = None):
@@ -48,6 +52,9 @@ def plot_lines(
             Please take a look at
             ``https://seaborn.pydata.org/generated/seaborn.color_palette.html``
             for more details.
+        font_style_path (path of font style):
+            If None, ``simhei.ttf`` will be used as default font style.
+            Chinese characters are supported in this font style.
         block (bool):
             if False, the figure will not be shown up even if output_path
             is None. This argument is left for unittest.
@@ -99,6 +106,9 @@ def plot_lines(
         loc=2,
         borderaxespad=0.,
     )
+    plt.subplots_adjust(right=0.8)
+    plt_set_font_style(font_style_path=font_style_path)
+
     if output_path is not None:
         plt.savefig(output_path)
     else:
