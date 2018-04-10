@@ -12,7 +12,7 @@ def entity_confusion_matrix(
         entity_predictions: List[List[dict]],
         y_trues: List[List[str]],
     ) -> Tuple[np.ndarray, List[str]]:
-    """Compute confusion matrix to evaluate the accuracy of a classification
+    """Confusion Matrix for Evaluating Entity Predictions
 
     Preprocess a list of raw entity predictions and
     compute confusion matrix by calling ``sklearn.metrics.confusion_matrix``.
@@ -29,13 +29,15 @@ def entity_confusion_matrix(
 
     Returns:
         confusion_matrix (numpy 2D array):
-            By definition a confusion matrix C is such that :math:`C_{i, j}` is equal to the
-            number of observations known to be in group i but predicted to be in group j.
-            If a confusion matrix is a diagonal matrix, we can know that the predictions
-            and true labels are perfectly matched.
+            By definition a confusion matrix C is such that :math:`C_{i, j}`
+            is equal to the number of observations known to be in group i
+            but predicted to be in group j. If a confusion matrix is a
+            diagonal matrix, we can know that the predictions and true
+            labels are perfectly matched.
 
         unique_entities (list of strings):
-            It records the meaning of group :math:`i`, :math:`j` of confusion matrix :math:`C_{i, j}`.
+            It records the meaning of group :math:`i`, :math:`j`
+            of confusion matrix :math:`C_{i, j}`.
 
     Examples:
         >>> from ynlu.sdj.evaluation import entity_confusion_matrix
@@ -60,6 +62,7 @@ def entity_confusion_matrix(
         ["DONT_CARE", "fruit", "drink"]
         >>> print(confusion_matrix)
         np.array([[7, 0, 1], [0, 5, 0], [0, 0, 0]])
+
     """
     flatten_y_pred = []
     flatten_y_true = []
