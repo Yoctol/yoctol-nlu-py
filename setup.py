@@ -31,8 +31,6 @@ setup(
         "matplotlib==2.2.2",
         "seaborn==0.8.1",
         "sklearn==0.0",
-        "ipython==6.2.1",
-        "jupyter==1.0.0",
     ],
     long_description=long_description,
     classifiers=[
