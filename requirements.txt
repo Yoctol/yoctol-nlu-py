@@ -6,4 +6,3 @@ sphinx-autobuild
 recommonmark
 ipython==6.2.1
 jupyter==1.0.0
-PyQt5==5.10.1
