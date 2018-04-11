@@ -26,6 +26,7 @@ def plot_lines(
         output_path: str = None,
         color_palette: sns.color_palette = None,
         font_style_path: str = None,
+        dpi: int = 300,
         block: bool = True,
     ) -> None:
     """Plot y versus x as lines and/or markers
@@ -55,6 +56,8 @@ def plot_lines(
         font_style_path (path of font style):
             If None, ``simhei.ttf`` will be used as default font style.
             Chinese characters are supported in this font style.
+        dpi (int, default = 300):
+            The resolution in dots per inch.
         block (bool):
             if False, the figure will not be shown up even if output_path
             is None. This argument is left for unittest.
@@ -74,7 +77,7 @@ def plot_lines(
 
     _check_data_format(data=data)
 
-    plt.figure(figsize=figure_size)
+    plt.figure(figsize=figure_size, dpi=dpi)
 
     if color_palette is None:
         color_palette = sns.color_palette("Set2", 10)

@@ -33,6 +33,7 @@ def plot_confusion_matrix(
         figure_size: Tuple[int, int] = (8, 6),
         cmap: plt.cm = plt.cm.Blues,
         font_style_path: str = None,
+        dpi: int = 300,
         block: bool = True,
     ) -> None:
     """Plot confusion matrix
@@ -63,6 +64,8 @@ def plot_confusion_matrix(
         font_style_path (path of font style):
             If None, ``simhei.ttf`` will be used as default font style.
             Chinese characters are supported in this font style.
+        dpi (int, default = 300):
+            The resolution in dots per inch.
         block (bool):
             If False, the figure will not be shown up even if output_path
             is None. This argument is left for unittest.
@@ -83,7 +86,7 @@ def plot_confusion_matrix(
         indices=indices,
     )
 
-    plt.figure(figsize=figure_size)
+    plt.figure(figsize=figure_size, dpi=dpi)
 
     if normalize:
         confusion_matrix = (
