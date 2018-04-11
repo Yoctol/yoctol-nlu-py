@@ -4,3 +4,5 @@ flake8-config-yoctol==0.0.9
 sphinx
 sphinx-autobuild
 recommonmark
+ipython==6.2.1
+jupyter==1.0.0
