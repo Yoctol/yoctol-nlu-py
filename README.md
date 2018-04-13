@@ -32,7 +32,7 @@ intent_prediction, entity_prediction = model.predict('飲料喝到飽')
 
 # Also could get the clf by clf's name
 # Get all possible clf names
-names = clf.get_all_available_clf_names()
+names = client.get_all_available_clf_names()
 print(names)
 
 # Get model by name
@@ -81,6 +81,8 @@ print(intent_accuracy_score_with_threshold(
     )
 )
 ```
+
+Check out the tutorials for more examples.
 
 ## Documentation
 
