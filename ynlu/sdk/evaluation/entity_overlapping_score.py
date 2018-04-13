@@ -13,7 +13,7 @@ def single__entity_overlapping_score(
     """Overlapping Score of a Single Utterance
 
     Examine the true and predicted entities in character-level. Then,
-    compute a score to represent theoverlapping rate between them.
+    compute a score to represent the overlapping rate between them.
 
     Args:
         utterance (a string):
@@ -35,7 +35,7 @@ def single__entity_overlapping_score(
 
 
     Examples:
-        >>> from ynlu.sdj.evaluation import single__entity_overlapping_score
+        >>> from ynlu.sdk.evaluation import single__entity_overlapping_score
         >>> overlapping_score = single__entity_overlapping_score(
                 utterance="I like apple.",
                 entity_prediction=[
@@ -50,7 +50,7 @@ def single__entity_overlapping_score(
                 ],
             )
         >>> print(overlapping_score)
-        1 / 13
+        12 / 13
     """
     y_pred = preprocess_entity_prediction(
         utterance=utterance,
