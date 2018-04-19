@@ -25,3 +25,7 @@ from .entity_overlapping_score import (  # noqa
 from .entity_confusion_matrix import (   # noqa
     entity_confusion_matrix,
 )
+from .entity_accuracy_score import (    # noqa
+    single__entity_accuracy_score,
+    entity_accuracy_score,
+)
